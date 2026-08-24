@@ -234,3 +234,112 @@ a.ui-to-top:hover {
     padding-bottom: 30px;
 }
 /* LocalWP Git sync test */
+
+/* Contact Form 7 */
+.wpcf7-form {
+    --form-border: #d8dee8;
+    --form-text: #24344d;
+    --form-muted: #6c7788;
+    max-width: 760px;
+}
+
+.wpcf7-form label {
+    display: block;
+    margin-bottom: 18px;
+    color: var(--form-text);
+    font-weight: 600;
+}
+
+.wpcf7-form .wpcf7-form-control-wrap {
+    display: block;
+    margin-top: 8px;
+}
+
+.wpcf7-form input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.wpcf7-form select,
+.wpcf7-form textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    border: 1px solid var(--form-border);
+    border-radius: 4px;
+    background-color: #fff;
+    color: var(--form-text);
+    font: inherit;
+    line-height: 1.5;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wpcf7-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.wpcf7-form input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
+.wpcf7-form select:focus,
+.wpcf7-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(84, 110, 155, 0.16);
+}
+
+.wpcf7-form input::placeholder,
+.wpcf7-form textarea::placeholder {
+    color: var(--form-muted);
+    opacity: 1;
+}
+
+.wpcf7-form input[type="submit"],
+.wpcf7-form button[type="submit"] {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 13px 28px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.wpcf7-form input[type="submit"]:hover,
+.wpcf7-form input[type="submit"]:focus,
+.wpcf7-form button[type="submit"]:hover,
+.wpcf7-form button[type="submit"]:focus {
+    background-color: var(--tertiary-color);
+    border-color: var(--tertiary-color);
+    color: #fff;
+}
+
+.wpcf7-form input[type="submit"]:focus,
+.wpcf7-form button[type="submit"]:focus {
+    outline: 3px solid rgba(84, 110, 155, 0.25);
+    outline-offset: 2px;
+}
+
+.wpcf7-form .wpcf7-not-valid {
+    border-color: var(--secondary-color);
+}
+
+.wpcf7-form .wpcf7-not-valid-tip,
+.wpcf7-form .wpcf7-response-output {
+    color: var(--secondary-color);
+    font-size: 0.9em;
+}
+
+.wpcf7-form .wpcf7-response-output {
+    margin: 20px 0 0;
+    padding: 12px 15px;
+    border: 1px solid currentColor;
+}
+
+@media (max-width: 575px) {
+    .wpcf7-form input[type="submit"],
+    .wpcf7-form button[type="submit"] {
+        width: 100%;
+    }
+}
