@@ -1,0 +1,16 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secrets / local configuration
+.env
+.env.*
+*.log
+
+# WordPress files that must never enter this repository
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
