@@ -88,3 +88,48 @@ Before modifying files:
 
 Do not deploy changes to production unless explicitly instructed.
 
+## LocalWP content workflow
+
+Local development uses the existing helper at `scripts/localwp-env.ps1`. It locates the LocalWP WordPress root, PHP, WP-CLI, and the active `php.ini`; do not duplicate that setup in other scripts.
+
+Codex-managed page content lives in `content/pages/*.html`. Each file uses a small front matter block followed by the page HTML:
+
+    ---
+    slug: example-page
+    title: Example page
+    status: draft
+    ---
+    <p>Page HTML.</p>
+
+From the repository root, inspect the planned changes safely with:
+
+    powershell -ExecutionPolicy Bypass -File .\sync-content-local.ps1 -DryRun
+
+The sync is dry-run by default. To write only to the configured LocalWP site, explicitly use:
+
+    powershell -ExecutionPolicy Bypass -File .\sync-content-local.ps1 -Apply
+
+The sync finds pages by exact slug, updates existing pages, and never deletes pages. It does not contact IONOS or production. An existing draft is only changed to `publish` when its managed file explicitly says `status: publish`. The existing `agb` page must remain draft, and `home` is intentionally not managed yet.
+
+After a local synchronization, refresh rendered snapshots separately with:
+
+    powershell -ExecutionPolicy Bypass -File .\refresh-seo-audit.ps1
+
+Never deploy or modify production/IONOS unless the user explicitly requests it.
+
+## Rendered site / SEO workflow
+
+For tasks involving rendered HTML, SEO, metadata, headings, internal links, accessibility, or page output:
+
+1. First run:
+   powershell -ExecutionPolicy Bypass -File .\refresh-seo-audit.ps1
+
+2. Inspect the generated HTML files under:
+   seo-audit/
+
+3. Base rendered-output conclusions on those snapshots rather than guessing from theme code alone.
+
+4. If changes affect rendered output, run the refresh script again after the changes and re-check the relevant HTML.
+
+5. Do not deploy to production automatically.
+
